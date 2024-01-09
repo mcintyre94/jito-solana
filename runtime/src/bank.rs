@@ -4988,6 +4988,7 @@ impl Bank {
             .and_then(|info| {
                 let post_account_state_info =
                     self.get_transaction_account_state_info(&transaction_context, tx.message());
+
                 self.verify_transaction_account_state_changes(
                     &pre_account_state_info,
                     &post_account_state_info,
@@ -5042,7 +5043,7 @@ impl Bank {
         }
         let status = status.map(|_| ());
 
-        loaded_transaction.accounts = accounts;
+        loaded_transaction.accounts = accounts.clone();
         saturating_add_assign!(
             timings.details.total_account_count,
             loaded_transaction.accounts.len() as u64
@@ -5065,6 +5066,7 @@ impl Bank {
                 return_data,
                 executed_units,
                 accounts_data_len_delta,
+                post_accounts: accounts,
             },
             programs_modified_by_tx: Box::new(programs_modified_by_tx),
         }

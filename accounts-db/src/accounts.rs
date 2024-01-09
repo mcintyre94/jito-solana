@@ -1009,6 +1009,7 @@ mod tests {
                 return_data: None,
                 executed_units: 0,
                 accounts_data_len_delta: 0,
+                post_accounts: [],
             },
             programs_modified_by_tx: Box::<LoadedProgramsForTxBatch>::default(),
         }

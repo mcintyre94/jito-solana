@@ -1,3 +1,5 @@
+use solana_sdk::{account::AccountSharedData, pubkey::Pubkey};
+
 use {
     crate::{
         nonce_info::{NonceFull, NonceInfo, NoncePartial},
@@ -79,6 +81,7 @@ pub struct TransactionExecutionDetails {
     /// The change in accounts data len for this transaction.
     /// NOTE: This value is valid IFF `status` is `Ok`.
     pub accounts_data_len_delta: i64,
+    pub post_accounts: Vec<(Pubkey, AccountSharedData)>,
 }
 
 #[derive(Debug, Clone)]
