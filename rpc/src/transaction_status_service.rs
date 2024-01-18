@@ -389,6 +389,7 @@ pub(crate) mod tests {
             return_data: None,
             executed_units: 0,
             accounts_data_len_delta: 0,
+            post_accounts: [],
         });
 
         let balances = TransactionBalancesSet {
